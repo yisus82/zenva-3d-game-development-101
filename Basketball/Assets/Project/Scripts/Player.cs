@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-  public GameObject ball;
+  public Ball ball;
   public GameObject playerCamera;
   public float ballDistance = 2f;
   public float ballThrowingForce = 500f;
@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
         holdingBall = false;
         ball.GetComponent<Rigidbody>().useGravity = true;
         ball.GetComponent<Rigidbody>().AddForce(playerCamera.transform.forward * ballThrowingForce);
+        ball.ActivateTrail();
       }
     }
   }
