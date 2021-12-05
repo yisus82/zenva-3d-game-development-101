@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
   public float ballDistance = 2f;
   public float ballThrowingForce = 500f;
 
-  private bool holdingBall = true;
+  bool holdingBall = true;
 
   void Start()
   {
@@ -21,12 +21,17 @@ public class Player : MonoBehaviour
       ball.transform.position = playerCamera.transform.position + playerCamera.transform.forward * ballDistance;
       ball.transform.rotation = playerCamera.transform.rotation;
 
-      if (Input.GetMouseButtonDown(0))
+      if (Input.GetAxis("Fire1") > 0)
       {
         holdingBall = false;
         ball.GetComponent<Rigidbody>().useGravity = true;
         ball.GetComponent<Rigidbody>().AddForce(playerCamera.transform.forward * ballThrowingForce);
       }
     }
+  }
+
+  public bool isHoldingBall()
+  {
+    return holdingBall;
   }
 }
